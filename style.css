@@ -1,0 +1,105 @@
+/* Reset básico para el body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh; /* Asegura que el body ocupe toda la pantalla */
+}
+
+/* Contenedor principal */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenedor de la imagen */
+.image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+}
+
+img {
+    width: auto;   /* Ajusta el ancho de la imagen automáticamente */
+    height: 100%;  /* La imagen ocupará toda la altura disponible */
+    object-fit: contain; /* Mantiene la imagen completa sin distorsionarla */
+    max-width: 100%; /* Evita que la imagen se desborde horizontalmente */
+}
+
+/* Estilos para los botones */
+.buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease-in-out; /* Transición suave para los botones */
+}
+
+.button {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    color: #f39c12;  /* Contorno naranja */
+    background-color: #000; /* Fondo negro */
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    border: 2px solid #f39c12; /* Contorno naranja */
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.button:hover {
+    background-color: #f39c12; /* Fondo naranja al pasar el mouse */
+    color: #000; /* Cambia el texto a negro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+    background-color: #d35400;
+    transform: scale(0.95);
+}
+
+/* Estilo para pantallas grandes (escritorios) */
+@media (min-width: 769px) {
+    .buttons {
+        top: 50%;
+        right: -150px; /* Empuja los botones fuera de la pantalla */
+        transform: translateY(-50%); /* Centra verticalmente los botones */
+    }
+
+    /* Mostrar los botones cuando el mouse está cerca del borde derecho */
+    body:hover .buttons {
+        right: 0;
+    }
+
+    /* Ocultar los botones cuando el mouse no está cerca del borde derecho */
+    body:not(:hover) .buttons {
+        right: -150px;
+    }
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    /* Los botones se colocan en la parte inferior */
+    .buttons {
+        bottom: 20px; /* Coloca los botones en la parte inferior */
+        left: 50%;
+        transform: translateX(-50%); /* Centra los botones horizontalmente */
+        right: auto; /* Elimina la posición a la derecha */
+    }
+
+    /* Ajusta el tamaño de los botones para pantallas más pequeñas */
+    .button {
+        width: 80px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+
+
